@@ -48,31 +48,27 @@ int SquareEquation (double a, double b, double c, double* first, double* second)
         if (iszero(b)) {
             if (iszero(c)) {
                 return INFINITY_SOLUTION;
-            } else {
-                return ZERO_SOLUTION;
             }
-        }
-        else {
-            *first = -c / b;
-
-            return ONE_SOLUTION;
-        }
-    }
-    else {
-        double Discriminant = b * b - 4 * a * c;
-        if (iszero(Discriminant)) {
-            *first = -b / 2 * a;
-
-            return ONE_SOLUTION;
-        } else if (Discriminant > 0) {
-            *first = (-b + sqrt(Discriminant)) / (2 * a);
-            *second = (-b - sqrt(Discriminant)) / (2 * a);
-
-            return TWO_SOLUTIONS;
-        }
-        else if (Discriminant < 0) {
             return ZERO_SOLUTION;
         }
+        *first = -c / b;
+
+        return ONE_SOLUTION;
+    }
+    double Discriminant = b * b - 4 * a * c;
+    if (iszero(Discriminant)) {
+        *first = -b / 2 * a;
+
+        return ONE_SOLUTION;
+    }
+    if (Discriminant > 0) {
+        *first = (-b + sqrt(Discriminant)) / (2 * a);
+        *second = (-b - sqrt(Discriminant)) / (2 * a);
+
+        return TWO_SOLUTIONS;
+    }
+    if (Discriminant < 0) {
+        return ZERO_SOLUTION;
     }
 }
 
